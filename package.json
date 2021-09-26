@@ -1,0 +1,31 @@
+{
+  "name": "demo-wallet",
+  "version": "1.0.0",
+  "description": "Demo Wallet published as web component",
+  "main": "dist/demo-wallet.umd.min.js",
+  "module": "dist/demo-wallet.esm.min.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "live-server": "^1.2.1",
+    "rollup": "^2.57.0",
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.43.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sh=./scripts/build.sh; chmod +x $sh && $sh",
+    "serve": "sh=./scripts/serve.sh; chmod +x $sh && $sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skiv71/demo-wallet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skiv71/demo-wallet/issues"
+  },
+  "homepage": "https://github.com/skiv71/demo-wallet#readme"
+}
