@@ -23,8 +23,6 @@ kill `pgrep -f $bin` 2>/dev/null
 
 # main
 watch=`[[ -n "$dist" ]] && echo $html,$dist || echo $html`
-echo $html
-echo $watch
 npx $bin --port=$port --watch=$watch --no-browser --entry-file=$html &
 pid=$!
 sleep 0.5
