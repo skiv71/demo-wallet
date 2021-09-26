@@ -2,7 +2,7 @@
 
 import resolve from '@rollup/plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
-//import { terser } from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 
 // configuration
 
@@ -12,7 +12,7 @@ var config = {
         sourcemap: true,
         dist: process.env.dist || `./dist`,
         file: process.env.file,
-  //      minify: true
+        minify: true
     },
     svelte: require(`./svelte.config`)
 };
@@ -49,12 +49,9 @@ var build = {
             name: this._name(name, minify),
             sourcemap: this._sourcemap(minify)
         };
-        return o
-        /*
         return minify
             ? { ...o, plugins: [terser()] }
             : o
-        */
     }
 };
 

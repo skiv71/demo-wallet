@@ -288,7 +288,7 @@ function create_fragment(ctx) {
 }
 
 function instance($$self) {
-	var message = `Hello, Tool!`;
+	var message = `Hello, Tool... how you doing today?`;
 	return [message];
 }
 

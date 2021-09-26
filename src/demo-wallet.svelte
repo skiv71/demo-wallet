@@ -1,7 +1,7 @@
 <svelte:options tag="demo-wallet"/>
 
 <script>
-    var message = `Hello, Tool!`
+    var message = `Hello, Tool... how you doing today?`
 </script>
 
 <div>

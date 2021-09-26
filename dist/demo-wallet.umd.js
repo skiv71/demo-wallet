@@ -294,7 +294,7 @@
     }
 
     function instance($$self) {
-    	var message = `Hello, Tool!`;
+    	var message = `Hello, Tool... how you doing today?`;
     	return [message];
     }
 
