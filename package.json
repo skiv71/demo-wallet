@@ -1,6 +1,6 @@
 {
-  "name": "demo-wallet",
-  "version": "1.0.0",
+  "name": "@skivy71/demo-wallet",
+  "version": "1.0.1",
   "description": "Demo Wallet published as web component",
   "main": "dist/demo-wallet.umd.min.js",
   "module": "dist/demo-wallet.esm.min.js",
