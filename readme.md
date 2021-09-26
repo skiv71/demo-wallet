@@ -10,26 +10,29 @@ Installation
 ------------
 
 ```
-yarn // recommended, as the package.json contains resolutions to dependancy vulnerabilties
+yarn
 ```
+(recommended over npm, as the package.json contains resolutions to dependancy vulnerabilties)
 
 Structure
 ---------
 
 (The default folders)
 
+```
 ./src -
     ./demo-wallet.svelte (build entry point)
 
-./dist -
+./dist - 
     ./ (...build artifacts are placed here)
 
-./html -
+./html - 
     ./local.html (for local component testing / loading)
     ./public.html (file for public component loading / unpkg, jsdelivr)
 
-./scripts -
+./scripts - 
     ./ (package.json scripts)
+```
 
 Unpkg
 -----
@@ -40,8 +43,10 @@ You will need to publish your package via ```npm publish```
 
 It allows: -
 
-a). @org/demo-wallet - latest release (via package.json, main or module)
-b). @org/demo-wallet@1.0.3 - specifc version 1.0.3
+a). @org/demo-wallet - latest release (via package.json, main or module) 
+
+b). @org/demo-wallet@1.0.3 - specifc version 1.0.3 
+
 c). @org/demo-wallet@^1.0.3 - 1.0.3 or later
 
 Jsdelivr
@@ -50,7 +55,9 @@ Jsdelivr
 This service allows you to consume directly from github, but has some caveats: -
 
 a). The need to specify the actual file you wish to use (as opposed to the package.json definition)
+
 b). Github releases have to be defined manually (either via github.com or their cli).
+
 c). Package.json becomes largely redundant (version and file).
 
 Usage
@@ -58,17 +65,11 @@ Usage
 
 Use the root component file to define the entry point and code in accordance with the library api (svelte in this case).
 
-```
-yarn run serve:local // web server, using the ./html/local.html file
-``` 
+```yarn run serve:local``` - web server, using the ./html/local.html file 
 
-```
-yarn run serve:public // as above, but uses .html/public.html
-```
+```yarn run serve:public``` - as above, but uses .html/public.html
 
-```
-yarn run build // builds artifacts, saved in ./dist, as per rollup config (esm, umd), with minified versions.
-```
+```yarn run build``` - builds artifacts, saved in ./dist, as per rollup config (esm, umd), with minified versions.
 
 Note
 ----
