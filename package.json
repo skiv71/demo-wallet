@@ -15,8 +15,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "sh=./scripts/build.sh; chmod +x $sh && $sh",
-    "serve": "sh=./scripts/serve.sh; chmod +x $sh && $sh"
+    "build": "sh=./scripts/build.sh; chmod +x $sh && $sh ./src ./dist",
+    "serve:local": "sh=./scripts/serve.sh; chmod +x $sh && $sh 1234 ./html/local.html ./dist",
+    "serve:public": "sh=./scripts/serve.sh; chmod +x $sh && $sh 1235 ./html/public.html"
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # args
-src=${1:-"./src"}
-dist=${2:-"./dist"}
+src=$1
+dist=$2
 
 # functions
+error() {
+    echo "Error, $1"
+    exit 1
+}
+
 clean() {
     [[ -d $1 ]] || return
     echo "Clean - folder: $1..."
@@ -19,6 +24,10 @@ build() {
 files() {
     echo `find $1 -maxdepth 1 -type f`
 }
+
+# check
+[[ -n "$src" ]] || error "Source folder required!"
+[[ -n "$dist" ]] || error "Dist folder required!"
 
 # main
 clean $dist
