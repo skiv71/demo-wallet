@@ -2,8 +2,8 @@
   "name": "@skivy71/demo-wallet",
   "version": "1.0.1",
   "description": "Demo Wallet published as web component",
-  "main": "dist/demo-wallet.umd.min.js",
-  "module": "dist/demo-wallet.esm.min.js",
+  "main": "./dist/demo-wallet.umd.min.js",
+  "module": "./dist/demo-wallet.esm.min.js",
   "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.5",
@@ -17,7 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "sh=./scripts/build.sh; chmod +x $sh && $sh ./src ./dist",
     "serve:local": "sh=./scripts/serve.sh; chmod +x $sh && $sh 1234 ./html/local.html ./dist",
-    "serve:public": "sh=./scripts/serve.sh; chmod +x $sh && $sh 1235 ./html/public.html"
+    "serve:public": "sh=./scripts/serve.sh; chmod +x $sh && $sh 1236 ./html/public.html"
   },
   "repository": {
     "type": "git",
