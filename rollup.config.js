@@ -8,6 +8,7 @@ import { terser } from 'rollup-plugin-terser';
 
 // package.json
 var pkg = require('./package.json')
+var path = require('path')
 
 // config
 
@@ -37,13 +38,15 @@ var build = {
     },
     _output(format, min) {
         var name = this._name()
+        var file = this._file(name, format, min)
         return {
             exports: `auto`,
             format,
-            file: this._file(name, format, min),
+            file,
             name,
             plugins: this._plugins(min),
-            sourcemap: config.sourcemap
+            sourcemapPathTransform: (a, b) => path.relative(__dirname, a),
+            sourcemap: min && config.sourcemap
         }
     },
     _plugins(min = false) {

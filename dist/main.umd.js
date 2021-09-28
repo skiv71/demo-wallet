@@ -561,4 +561,3 @@
     return Main;
 
 }));
-//# sourceMappingURL=main.umd.js.map

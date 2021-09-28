@@ -553,4 +553,3 @@ class Main extends SvelteElement {
 customElements.define("demo-wallet", Main);
 
 export { Main as default };
-//# sourceMappingURL=main.esm.js.map
