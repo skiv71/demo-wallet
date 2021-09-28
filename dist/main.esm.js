@@ -407,7 +407,7 @@ function instance$1($$self, $$props, $$invalidate) {
 	onMount(() => {
 		setTimeout(
 			() => {
-				console.log(`timout`);
+				console.log(`timeout`);
 				$$invalidate(0, person.age = 30, person);
 			},
 			10e3

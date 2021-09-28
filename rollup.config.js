@@ -7,6 +7,7 @@ import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 
 // package.json
+
 var pkg = require('./package.json')
 
 // config
@@ -45,7 +46,7 @@ var build = {
             file,
             name,
             plugins: this._plugins(min),
-            sourcemap: min && config.sourcemap ? `inline` : false
+            sourcemap: min && config.sourcemap && !build.production ? `hidden` : false
         }
     },
     _plugins(min = false) {

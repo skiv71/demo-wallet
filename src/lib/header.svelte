@@ -5,7 +5,7 @@
     export var person = { name: ``, age: `` };
     onMount(() => {
         setTimeout(() => {
-            console.log(`timout`)
+            console.log(`timeout`)
             person.age = 30
         }, 10e3)
     })
