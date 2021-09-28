@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # args
+bin=rollup
 src=$1
-dist=$2
+output=$2
 
 # functions
 error() {
@@ -17,21 +18,19 @@ clean() {
 }
 
 build() {
-    echo "Build - file: $1 ---> output: $2..."
-    npx rollup -c --environment file:$1,dist:$2
+    local args="-c --environment INPUT_FILE:$1,OUTPUT_DIR:$2"
+    echo "Build: "$bin $args
+    npx $bin $args
 }
 
-files() {
+input() {
     echo `find $1 -maxdepth 1 -type f`
 }
 
 # check
-[[ -n "$src" ]] || error "Source folder required!"
-[[ -n "$dist" ]] || error "Dist folder required!"
+[[ -n "$src" ]] || error "Build source folder required!"
+[[ -n "$output" ]] || error "Build output folder required!"
 
 # main
-clean $dist
-
-for f in `files $src`; do
-    build $f $dist
-done
+clean $output
+build `input $src` $output

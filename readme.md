@@ -21,7 +21,7 @@ Structure
 
 ```
 ./src -
-    ./demo-wallet.svelte (build entry point)
+    ./main.svelte (build entry point)
 
 ./dist - 
     ./ (...build artifacts are placed here)
@@ -65,11 +65,11 @@ Usage
 
 Use the root component file to define the entry point and code in accordance with the library api (svelte in this case).
 
-```yarn run serve:local``` - web server, using the ./html/local.html file 
+```yarn run serve``` - web server, using the ./html/local.html file 
 
 ```yarn run serve:public``` - as above, but uses .html/public.html
 
-```yarn run build``` - builds artifacts, saved in ./dist, as per rollup config (esm, umd), with minified versions.
+```yarn run build``` - builds artifacts, saved in ./dist, as per rollup config (esm, umd, minified versions).
 
 Note
 ----

@@ -1,76 +1,86 @@
 //@ts-check
 
+// plugins
+
 import resolve from '@rollup/plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 
-// configuration
+// package.json
+var pkg = require('./package.json')
+
+// config
 
 var config = {
-    build: {
-        formats: [`esm`, `umd`],
-        sourcemap: true,
-        dist: process.env.dist || `./dist`,
-        file: process.env.file,
-        minify: true
-    },
-    svelte: require(`./svelte.config`)
+    input: process.env.INPUT_FILE,
+    dist: process.env.OUTPUT_DIR || `./dist`,
+    formats: [`umd`, `esm`],
+    sourcemap: true,
+    minify: true
 };
 
 // lib
 
 var build = {
-    _file(name, format, minify) {
-        return this._name(`${config.build.dist}/${name}.${format}`, minify, `.js`)
+    _file(name, format, min) {
+        var f = [name, format, min ? `min` : ``, `js`]
+            .filter(s => s)
+            .join(`.`)
+        return `${config.dist}/${f}`
     },
-    _name(file, minify, suffix = ``) {
-        var f = minify
-            ? `${file}.min`
-            : file
-        return suffix
-            ? `${f}.${suffix.split(`.`).pop()}`
-            : f
-    },
-    _sourcemap(minify) {
-        return minify
-            ? false
-            : config.build.sourcemap 
-    },
-    output(input, format, minify = false) {
-        var name = input
+    _name() {
+        return config.input
             .split(`/`)
             .pop()
             .split(`.`)
-            .shift();
-        var o = {
+            .shift()
+    },
+    _output(format, min) {
+        var name = this._name()
+        return {
             exports: `auto`,
-            file: this._file(name, format, minify),
             format,
-            name: this._name(name, minify),
-            sourcemap: this._sourcemap(minify)
-        };
-        return minify
-            ? { ...o, plugins: [terser()] }
-            : o
+            file: this._file(name, format, min),
+            name,
+            plugins: this._plugins(min),
+            sourcemap: config.sourcemap
+        }
+    },
+    _plugins(min = false) {
+        return min
+            ? [terser()]
+            : []
+    },
+    element() {
+        var el = pkg.name
+            .split(`/`)
+            .pop()
+        if (!el.includes(`-`))
+            throw new Error(`Please use a package name with a hypen!`)
+        return el
+    },
+    output(min = false) {
+        return config.formats
+            .map(f => this._output(f, min))
     }
-};
+}
 
 // main
 
 export default {
     get input() {
-        return config.build.file;
+        return config.input
     },
     get output() {
-        var o = config.build.formats
-            .map(f => build.output(this.input, f));
-        return config.build.minify
-            ? [...o, ...config.build.formats.map(f => build.output(this.input, f, true))]
+        var o = build.output()
+        return config.minify
+            ? [...o, ...build.output(true)]
             : o
     },
     get plugins() {
         return [
-            svelte(config.svelte),
+            svelte({ include: config.input, compilerOptions: { customElement: true, tag: build.element() }}),
+            svelte({ include: `./src/*/**/*`, emitCss: false }),
             resolve()
         ];
     }
