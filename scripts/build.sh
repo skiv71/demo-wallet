@@ -28,7 +28,7 @@ input() {
 }
 
 sourcemapURL() {
-    sed -i "s|URL=|URL=$output/|" `realpath $1`
+    sed -i "s|URL=|URL=dist/|" `realpath $1`
 }
 
 # check
@@ -44,4 +44,3 @@ build `input $src` $output
 for f in `ls $output/*.min.js`; do
     [[ -f `realpath $f.map` ]] && sourcemapURL $f
 done
-echo 'modify?'
