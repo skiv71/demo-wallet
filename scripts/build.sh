@@ -4,6 +4,7 @@
 bin=rollup
 src=$1
 output=$2
+env=$3
 
 # functions
 error() {
@@ -18,7 +19,7 @@ clean() {
 }
 
 build() {
-    local args="-c --environment INPUT_FILE:$1,OUTPUT_DIR:$2"
+    local args="-c --environment INPUT_FILE:$1,OUTPUT_DIR:$2,BUILD_ENV=$3"
     echo "Build: "$bin $args
     npx $bin $args
 }
@@ -38,7 +39,7 @@ sourcemapURL() {
 # main
 clean $output
 build `input $src` $output
-
+exit
 # sourcemaps
 
 for f in `ls $output/*.min.js`; do

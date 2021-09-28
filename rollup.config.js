@@ -8,13 +8,13 @@ import { terser } from 'rollup-plugin-terser';
 
 // package.json
 var pkg = require('./package.json')
-var path = require('path')
 
 // config
 
 var config = {
     input: process.env.INPUT_FILE,
     dist: process.env.OUTPUT_DIR || `./dist`,
+    build: process.env.BUILD_ENV || `dev`,
     formats: [`umd`, `esm`],
     sourcemap: true,
     minify: true
@@ -45,8 +45,7 @@ var build = {
             file,
             name,
             plugins: this._plugins(min),
-            sourcemapPathTransform: (a, b) => path.relative(__dirname, a),
-            sourcemap: min && config.sourcemap
+            sourcemap: min && config.sourcemap ? `inline` : false
         }
     },
     _plugins(min = false) {
@@ -65,6 +64,9 @@ var build = {
     output(min = false) {
         return config.formats
             .map(f => this._output(f, min))
+    },
+    get production() {
+        return config.build.toLowerCase().includes(`production`)
     }
 }
 

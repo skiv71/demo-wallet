@@ -1,13 +1,12 @@
 {
   "name": "@skivy71/demo-wallet",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Demo Wallet published as web component",
   "main": "./dist/main.umd.min.js",
   "module": "./dist/main.esm.min.js",
   "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.5",
-    "@rollup/plugin-replace": "^3.0.0",
     "live-server": "^1.2.1",
     "rollup": "^2.57.0",
     "rollup-plugin-svelte": "^7.1.0",
