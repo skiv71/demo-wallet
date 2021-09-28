@@ -1,9 +1,9 @@
 {
   "name": "@skivy71/demo-wallet",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Demo Wallet published as web component",
-  "main": "./dist/main.umd.min.js",
-  "module": "./dist/main.esm.min.js",
+  "main": "dist/main.umd.min.js",
+  "module": "dist/main.esm.min.js",
   "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.5",
@@ -16,14 +16,6 @@
   "resolutions": {
     "glob-parent": "^6.0.1"
   },
-  "files": [
-    "./dist/main.esm.js",
-    "./dist/main.esm.min.js",
-    "./dist/main.esm.min.js.map",
-    "./dist/main.umd.js",
-    "./dist/main.umd.min.js",
-    "./dist/main.umd.min.js.map"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "sh=./scripts/build.sh; chmod +x $sh && $sh ./src ./dist",

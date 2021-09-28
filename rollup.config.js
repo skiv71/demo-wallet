@@ -46,7 +46,7 @@ var build = {
             file,
             name,
             plugins: this._plugins(min),
-            sourcemap: min && config.sourcemap && !build.production ? `hidden` : false
+            sourcemap: min && config.sourcemap && !build.production ? `inline` : false
         }
     },
     _plugins(min = false) {
