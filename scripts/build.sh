@@ -28,20 +28,10 @@ input() {
     echo `find $1 -maxdepth 1 -type f`
 }
 
-sourcemapURL() {
-    sed -i "s|URL=|URL=dist/|" `realpath $1`
-}
-
 # check
 [[ -n "$src" ]] || error "Build source folder required!"
 [[ -n "$output" ]] || error "Build output folder required!"
 
 # main
 clean $output
-build `input $src` $output
-exit
-# sourcemaps
-
-for f in `ls $output/*.min.js`; do
-    [[ -f `realpath $f.map` ]] && sourcemapURL $f
-done
+build `input $src` $output $env
